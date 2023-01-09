@@ -5,7 +5,7 @@
          {{ index }} {{ value }}
        <p></p>
       <label for="rating">Rating:</label>
-    <input v-if="$store.state.fav" type="number" v-model="ratings[index].rating" />
+    <input v-if="$store.state.fav" type="number" v-model="ratings[index].rating" min="0" max="10" />
        <button @click="setAnimeId(index, key)" >Click me</button>
     </li>
      <form @submit.prevent="submit">

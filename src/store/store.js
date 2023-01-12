@@ -11,7 +11,7 @@ export default new Vuex.Store({
       Dataname: null,
       Datasyn: null,
       Datafav: null,
-      fav: {}
+      fav: []
     },
     mutations: {
       setLoggedIn(state, loggedIn) {
@@ -29,6 +29,9 @@ export default new Vuex.Store({
       setDatafav(state, Datafav){
         state.Datafav = Datafav
       },
+      setfav(state, fav){
+        state.fav.push(fav)
+      },
       removeDatafav(state){
         state.Datafav = null
       },
@@ -40,9 +43,6 @@ export default new Vuex.Store({
       },
       removeDataSyn(state) {
         state.Datasyn = null
-      },
-      addToFav(state, { key, value }) {
-        state.fav[key] = value
       }
     },
     actions: {

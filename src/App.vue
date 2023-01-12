@@ -1,11 +1,9 @@
 <template>
   <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>|
-    <router-link to="/login">Login</router-link>|
+    <router-link to="/">Login</router-link>
     <span v-if="$store.state.loggedIn">
-    <router-link to="/SerchByName">Name</router-link>|
-    <router-link to="/SerchBySyn">Syn</router-link>|
+      |
+    <router-link to="/SerchByName">search</router-link> |
     <router-link to="/Fav">fav</router-link>
     </span>
   </nav>

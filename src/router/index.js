@@ -1,17 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
 import SerchByNameView from '../views/SerchByName.vue'
-import SerchBySynView from '../views/SerchBySyn.vue'
 import FavView from '../views/FavView.vue'
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/login',
     name: 'login',
     component: LoginView
   }, 
@@ -19,11 +12,6 @@ const routes = [
     path: '/SerchByName',
     name: 'SerchByname',
     component: SerchByNameView
-  },
-  {
-    path: '/SerchBySyn',
-    name: 'SerchBySyn',
-    component: SerchBySynView
   },
   {
     path: '/Fav',

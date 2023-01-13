@@ -8,6 +8,7 @@
       <input type="number" v-model="ratings[index].rating" min="1" max="10"/>
     </div>
        <button @click="setAnimeId(index,item.mal_id)" class ="button-6" >Setid</button>
+       <button @click="removeanime(index)" class ="button-6" >remove fav</button>
   </div>
   <form @submit.prevent="submit">
         <button type="submit" class = "button-6">Submit</button>
@@ -87,7 +88,8 @@ export default {
 methods: {
   setAnimeId(index, id) {
     this.ratings[index].anime_id = id
-  },submit() {
+  },
+  submit() {
       this.$store.commit('removeDatafav')
       axios.post('http://127.0.0.1:5000/predictanime', this.ratings)
       .then((response) => {
@@ -97,7 +99,10 @@ methods: {
         .catch((error) => {
           console.log(error)
         })
-    }
+    },
+    removeanime(index) {
+    this.$store.commit('splicearryFav', index);
+  }
 }
 }
 </script>

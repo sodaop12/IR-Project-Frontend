@@ -10,6 +10,14 @@
         <br />
         <button type="submit">Submit</button>
       </form>
+       <br />
+      <form @submit.prevent="CorrectName">
+        <label>CorrectName:</label>
+        <input type="text" v-model="Word" />
+        <br />
+        <button type="submit">Submit</button>
+        <p>{{ Wordcorrect }}</p>
+    </form>
     </div>
     <div v-else-if="currentForm === 'Synopsis'">
       <form @submit.prevent="submitSyn">
@@ -18,6 +26,14 @@
         <br />
         <button type="submit">Submit</button>
       </form>
+      <br />
+      <form @submit.prevent="CorrectSyn">
+        <label>CorrectSyn:</label>
+        <input type="text" v-model="Wordsyn" />
+        <br />
+        <button type="submit">Submit</button>
+        <p>{{ WordSyncorrect }}</p>
+    </form>
     </div>
   </div>
 
@@ -40,6 +56,10 @@ export default {
         currentForm: 'Name',
         Synopsis: '',
         Name: '',
+        Word: '',
+        Wordsyn: '',
+        WordSyncorrect: null,
+        Wordcorrect: null,
         Data: null,
     }
   },
@@ -56,6 +76,30 @@ export default {
       .then((response) => {
           this.Data = response
           this.$store.commit('setDataName', this.Data)
+          })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
+    CorrectName() {
+    const object = {
+        Word: this.Word,
+      };
+      axios.post('http://127.0.0.1:5000/CorrectionName', object)
+      .then((response) => {
+          this.Wordcorrect = response.data
+          })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
+    CorrectSyn() {
+    const object = {
+        Wordsyn: this.Wordsyn,
+      };
+      axios.post('http://127.0.0.1:5000/CorrectionSyn', object)
+      .then((response) => {
+          this.WordSyncorrect = response.data
           })
         .catch((error) => {
           console.log(error)

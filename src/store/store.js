@@ -43,6 +43,9 @@ export default new Vuex.Store({
       },
       removeDataSyn(state) {
         state.Datasyn = null
+      },
+      splicearryFav(state,index) {
+        state.fav.splice(index,1) 
       }
     },
     actions: {
